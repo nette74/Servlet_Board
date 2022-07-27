@@ -1,5 +1,6 @@
 package com.ll.board;
 
+import com.ll.board.article.ArticleController;
 import com.ll.board.member.MemberController;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,8 +15,24 @@ public class DispatchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.getWriter().append("왜 안되는 것이지");
+
+
+        Rq rq = new Rq(req, resp);
         MemberController memberController = new MemberController();
+        ArticleController articleController = new ArticleController();
+
+
 
         //req.getRequestURL();
+        switch (rq.getPath()){
+            case "/usr/article":
+                articleController.showList(rq);
+                break;
+            case "/usr/member":
+                memberController.showLogin(rq);
+                break;
+
+
+        }
     }
 }
