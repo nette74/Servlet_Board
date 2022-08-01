@@ -28,9 +28,13 @@ public class DispatchServlet extends HttpServlet {
 
         //req.getRequestURL();
         switch (rq.getPath()){
+
+
             case "/usr/article":
                 articleController.showList(rq);
                 break;
+
+
             case "/usr/member":
                 memberController.showLogin(rq);
                 break;
