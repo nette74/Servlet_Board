@@ -11,7 +11,7 @@
 
 
 <h1>
-    Wonder if JSP working ?
+    게시물 리스트 , LIST
 </h1>
 
 <%for(ArticleDto article : articleDtos) { %>

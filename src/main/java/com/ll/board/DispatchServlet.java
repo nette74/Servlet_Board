@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-
 @WebServlet("/usr/*")
 public class DispatchServlet extends HttpServlet {
     @Override
@@ -25,15 +24,18 @@ public class DispatchServlet extends HttpServlet {
         ArticleController articleController = new ArticleController();
 
 
-
         //req.getRequestURL();
-        switch (rq.getPath()){
+        switch (rq.getPath()) {
 
 
             case "/usr/article":
                 articleController.showList(rq);
                 break;
 
+            case "/usr/article/write/free":
+                articleController.showWrite(rq);
+
+                break;
 
             case "/usr/member":
                 memberController.showLogin(rq);

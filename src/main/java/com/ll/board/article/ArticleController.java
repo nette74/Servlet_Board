@@ -46,7 +46,9 @@ public class ArticleController {
 
     //추상화
     //나중에 이름 고쳐서 구현하고 지울 것들
-    public void create(){}
+    public void showWrite(Rq rq){
+        rq.view("/usr/article/write");
+    }
     public void read(){}
     public void update(){}
     public void delete(){}
