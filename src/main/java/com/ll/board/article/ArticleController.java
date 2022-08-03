@@ -52,4 +52,9 @@ public class ArticleController {
     public void read(){}
     public void update(){}
     public void delete(){}
+
+    public void doWrite(Rq rq) {
+    }
+
+
 }

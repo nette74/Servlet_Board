@@ -15,33 +15,47 @@ import java.io.IOException;
 public class DispatchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //resp.getWriter().append("왜 안되는 것이지");
-        //한글 안 깨지게 하는 코드 어디있지?
-
-
+        //한글 안 깨지게 하는 코드 어디있지? -> JSP 안에 있음.
         Rq rq = new Rq(req, resp);
         MemberController memberController = new MemberController();
         ArticleController articleController = new ArticleController();
 
 
         //req.getRequestURL();
-        switch (rq.getPath()) {
+        switch (rq.getMethod()){
+            case "GET":
+                switch (rq.getPath()) {
 
 
-            case "/usr/article":
-                articleController.showList(rq);
+                    case "/usr/article":
+                        articleController.showList(rq);
+                        break;
+
+                    case "/usr/article/write/free":
+                        articleController.showWrite(rq);
+
+                        break;
+
+                    case "/usr/member":
+                        memberController.showLogin(rq);
+                        break;
+
+
+                }
                 break;
+            case "POST":
+                switch (rq.getPath()) {
+                    case "/usr/article/write/free":
+                        articleController.doWrite(rq);
+                        break;
 
-            case "/usr/article/write/free":
-                articleController.showWrite(rq);
-
+                    case "/usr/member":
+                        memberController.doLogin(rq);
+                        break;
+                }
                 break;
-
-            case "/usr/member":
-                memberController.showLogin(rq);
-                break;
-
-
         }
+
+
     }
 }
